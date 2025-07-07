@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - مطعم الكبدة</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>لوحة التحكم</h1>
+            <p>إدارة أصناف المطعم</p>
+            <a href="index.html" class="admin-link">العودة للبيع</a>
+        </header>
+
+        <div class="admin-section">
+            <h2>إضافة صنف جديد</h2>
+            <div class="add-item-form">
+                <input type="text" id="new-item-name" placeholder="اسم الصنف">
+                <input type="number" id="new-item-price" placeholder="السعر">
+                <select id="new-item-category">
+                    <option value="كبدة">كبدة</option>
+                    <option value="حواشي">حواشي</option>
+                    <option value="فراخ">فراخ</option>
+                </select>
+                <button onclick="addNewItem()">إضافة صنف</button>
+            </div>
+
+            <h2>قائمة الأصناف الحالية</h2>
+            <div class="current-items" id="current-items">
+                <!-- سيتم تعبئتها من localStorage -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
