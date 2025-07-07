@@ -194,3 +194,88 @@ button:hover {
 .edit-btn:hover {
     background-color: #0b7dda !important;
 }
+/* أنماط التقارير */
+.report-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.report-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.summary-card {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.summary-card h3 {
+    color: #666;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.summary-card p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.report-table th, .report-table td {
+    padding: 12px;
+    text-align: right;
+    border-bottom: 1px solid #ddd;
+}
+
+.report-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.report-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.report-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.report-actions button {
+    flex: 1;
+    background-color: #2196F3;
+}
+
+.report-actions button:last-child {
+    background-color: #4CAF50;
+}
+
+@media print {
+    .admin-link, .report-actions {
+        display: none;
+    }
+    
+    body {
+        padding: 0;
+        font-size: 12px;
+    }
+    
+    .report-table th, .report-table td {
+        padding: 6px;
+    }
+}
