@@ -11,27 +11,12 @@
     <div class="container">
         <header>
             <h1>مطعم الكبدة</h1>
-            <p>نظام المبيعات المبسط</p>
+            <p>نظام المبيعات</p>
+            <a href="admin.html" class="admin-link">لوحة التحكم</a>
         </header>
 
-        <div class="menu-items">
-            <div class="item" onclick="addToBill('كبدة', 30)">
-                <i class="fas fa-utensils"></i>
-                <h3>كبدة</h3>
-                <p>30 جنيهاً</p>
-            </div>
-            
-            <div class="item" onclick="addToBill('حواشي', 40)">
-                <i class="fas fa-drumstick-bite"></i>
-                <h3>حواشي</h3>
-                <p>40 جنيهاً</p>
-            </div>
-            
-            <div class="item" onclick="addToBill('فراخ', 50)">
-                <i class="fas fa-kiwi-bird"></i>
-                <h3>فراخ مشوية</h3>
-                <p>50 جنيهاً</p>
-            </div>
+        <div class="menu-items" id="menu-items">
+            <!-- سيتم تعبئتها من localStorage -->
         </div>
 
         <div class="bill-section">
