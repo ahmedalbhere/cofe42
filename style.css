@@ -24,6 +24,7 @@ header {
     background-color: #4CAF50;
     color: white;
     border-radius: 8px;
+    position: relative;
 }
 
 header h1 {
@@ -31,9 +32,21 @@ header h1 {
     margin-bottom: 10px;
 }
 
+.admin-link {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background-color: white;
+    color: #4CAF50;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
 .menu-items {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 15px;
     margin-bottom: 30px;
 }
@@ -116,4 +129,68 @@ button {
 
 button:hover {
     background-color: #d32f2f;
+}
+
+/* أنماط صفحة الإدارة */
+.admin-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.add-item-form {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.5fr;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.add-item-form input, .add-item-form select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.add-item-form button {
+    background-color: #4CAF50;
+}
+
+.add-item-form button:hover {
+    background-color: #45a049;
+}
+
+.current-items {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.current-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.current-item input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.current-item button {
+    padding: 8px;
+    background-color: #f44336;
+}
+
+.edit-btn {
+    background-color: #2196F3 !important;
+}
+
+.edit-btn:hover {
+    background-color: #0b7dda !important;
 }
