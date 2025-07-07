@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مطعم الكبدة - نظام مبيعات</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>مطعم الكبدة</h1>
+            <p>نظام المبيعات المبسط</p>
+        </header>
+
+        <div class="menu-items">
+            <div class="item" onclick="addToBill('كبدة', 30)">
+                <i class="fas fa-utensils"></i>
+                <h3>كبدة</h3>
+                <p>30 جنيهاً</p>
+            </div>
+            
+            <div class="item" onclick="addToBill('حواشي', 40)">
+                <i class="fas fa-drumstick-bite"></i>
+                <h3>حواشي</h3>
+                <p>40 جنيهاً</p>
+            </div>
+            
+            <div class="item" onclick="addToBill('فراخ', 50)">
+                <i class="fas fa-kiwi-bird"></i>
+                <h3>فراخ مشوية</h3>
+                <p>50 جنيهاً</p>
+            </div>
+        </div>
+
+        <div class="bill-section">
+            <h2>الفاتورة</h2>
+            <div id="bill-items"></div>
+            <div class="total">
+                الإجمالي: <span id="total-amount">0</span> جنيهاً
+            </div>
+            <button onclick="resetBill()">تصفير الفاتورة</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
