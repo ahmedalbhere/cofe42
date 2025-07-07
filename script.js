@@ -158,3 +158,104 @@ function getItemIcon(category) {
         default: return 'hamburger';
     }
 }
+// حفظ بيانات الفواتير
+function saveBillToHistory(total, items) {
+    const today = new Date().toLocaleDateString();
+    let billsHistory = JSON.parse(localStorage.getItem('billsHistory') || '{}');
+    
+    if (!billsHistory[today]) {
+        billsHistory[today] = {
+            total: 0,
+            items: {}
+        };
+    }
+    
+    // تحديث الإجمالي
+    billsHistory[today].total += total;
+    
+    // تحديث الكميات
+    items.forEach(item => {
+        if (!billsHistory[today].items[item.name]) {
+            billsHistory[today].items[item.name] = {
+                quantity: 0,
+                total: 0,
+                price: item.price
+            };
+        }
+        billsHistory[today].items[item.name].quantity += 1;
+        billsHistory[today].items[item.name].total += item.price;
+    });
+    
+    localStorage.setItem('billsHistory', JSON.stringify(billsHistory));
+}
+
+// تعديل دالة printBill لحفظ التاريخ
+function printBill() {
+    const billItems = document.querySelectorAll('.bill-item');
+    if (billItems.length === 0) {
+        alert('الفاتورة فارغة!');
+        return;
+    }
+    
+    const items = [];
+    let total = 0;
+    
+    billItems.forEach(item => {
+        const name = item.querySelector('.item-name').textContent;
+        const price = parseFloat(item.querySelector('.item-price').textContent);
+        items.push({ name, price });
+        total += price;
+    });
+    
+    saveBillToHistory(total, items);
+    
+    // باقي كود الطباعة...
+    alert('تم حفظ الفاتورة في التقرير اليومي');
+    resetBill();
+}
+
+// عرض التقرير اليومي
+function displayDailyReport() {
+    const today = new Date().toLocaleDateString();
+    const billsHistory = JSON.parse(localStorage.getItem('billsHistory') || '{}');
+    const reportData = billsHistory[today] || { total: 0, items: {} };
+    
+    const reportContainer = document.getElementById('report-container');
+    if (!reportContainer) return;
+    
+    reportContainer.innerHTML = `
+        <h2>تقرير يومي - ${today}</h2>
+        <div class="report-summary">
+            <div class="summary-card">
+                <h3>إجمالي المبيعات</h3>
+                <p>${reportData.total.toFixed(2)} جنيهاً</p>
+            </div>
+            <div class="summary-card">
+                <h3>عدد الأصناف المباعة</h3>
+                <p>${Object.keys(reportData.items).length}</p>
+            </div>
+        </div>
+        
+        <h3>تفاصيل الأصناف</h3>
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>الصنف</th>
+                    <th>السعر</th>
+                    <th>الكمية</th>
+                    <th>الإجمالي</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${Object.entries(reportData.items).map(([name, data]) => `
+                    <tr>
+                        <td>${name}</td>
+                        <td>${data.price.toFixed(2)} جنيهاً</td>
+                        <td>${data.quantity}</td>
+                        <td>${data.total.toFixed(2)} جنيهاً</td>
+                    </tr>
+                `).join('')}
+            </tbody>
+        </table>
+    `;
+}
